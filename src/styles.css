@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Great+Vibes&display=swap');
+
+
+
+
+:root { font-family: 'Cormorant Garamond', Georgia, serif; color: #51451d; background: #f4ebdc; font-synthesis: none; }
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, a { font: inherit; }
+:focus-visible { outline: 2px solid #aa873c; outline-offset: 4px; }
+
+.page-shell { min-height: 100vh; position: relative; overflow: hidden; padding: 56px 20px 26px; background: radial-gradient(ellipse at 50% 12%, #fffaf0 0, #f8efdf 45%, #eadcc4 100%); }
+.page-shell::before { position: fixed; inset: 0; pointer-events: none; content: ''; opacity: .2; background-image: radial-gradient(#b99857 0.65px, transparent .65px); background-size: 9px 9px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
+.ambient { position: absolute; width: 360px; height: 360px; border: 1px solid rgba(172,137,63,.12); border-radius: 50%; pointer-events: none; }
+.ambient::before,.ambient::after { content: ''; position: absolute; inset: 24px; border: 1px solid rgba(172,137,63,.1); border-radius: 50%; }
+.ambient::after { inset: 50px; }.ambient-one { top: -200px; left: -170px; }.ambient-two { right: -180px; bottom: -200px; }
+.invitation-wrap { position: relative; z-index: 1; width: min(100%, 570px); margin: 0 auto; }
+.music-button { position: absolute; z-index: 3; top: 18px; right: max(18px, calc((100vw - 700px)/2)); display: flex; align-items: center; gap: 9px; padding: 10px 15px; border: 1px solid rgba(149,116,46,.44); border-radius: 999px; background: rgba(255,251,242,.8); color: #66531f; font-size: 14px; letter-spacing: .04em; cursor: pointer; box-shadow: 0 5px 18px #72551b12; backdrop-filter: blur(8px); transition: .25s ease; }
+.music-button:hover { background: #fffaf0; border-color: #9b7b37; transform: translateY(-1px); }
+.sound-waves { height: 14px; display: inline-flex; align-items: center; gap: 2px; }.sound-waves i { width: 2px; height: 5px; border-radius: 2px; background: #987d3d; animation: wave .7s ease-in-out infinite alternate; }.sound-waves i:nth-child(2) { height: 12px; animation-delay: .2s; }.sound-waves i:nth-child(3) { height: 8px; animation-delay: .4s; }
+.invite-card { position: relative; isolation: isolate; overflow: hidden; min-height: 800px; border: 1px solid #bb9c5d; background: #f9f1e3; box-shadow: 0 28px 80px #654f201c, 0 4px 12px #654f2010; }
+.invite-card::before { content: ''; position: absolute; z-index: -1; inset: 12px; border: 1px solid #d2bb86; pointer-events: none; }
+.invite-card::after { content: ''; position: absolute; z-index: -1; inset: 18px; border: 1px solid rgba(194,166,107,.4); pointer-events: none; }
+.card-pattern { position:absolute; z-index:-2; inset:0; opacity:.2; background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c6ad79' stroke-width='1'%3E%3Cpath d='M50 2 62 18 82 18 82 38 98 50 82 62 82 82 62 82 50 98 38 82 18 82 18 62 2 50 18 38 18 18 38 18z'/%3E%3Ccircle cx='50' cy='50' r='22'/%3E%3C/g%3E%3C/svg%3E"); background-size: 74px 74px; mask-image: linear-gradient(to bottom, transparent, black 15%, black 80%, transparent); }
+.card-frame { position:absolute; inset:0; z-index:2; pointer-events:none; }.card-frame span { position:absolute; width:62px; height:62px; border-color:#b89a59; border-style:solid; opacity:.75; }.card-frame span:first-child { top:20px;left:20px;border-width:1px 0 0 1px; }.card-frame span:last-child { right:20px;bottom:20px;border-width:0 1px 1px 0; }
+.card-floral,.card-sprig { position:absolute; z-index:0; width:148px; opacity:.72; }.floral-left { left:-43px;top:165px;transform:rotate(-20deg); }.floral-right { right:-43px;top:165px;transform:scaleX(-1) rotate(-20deg); }.sprig-left { left:-39px;bottom:160px;transform:rotate(-10deg); }.sprig-right { right:-39px;bottom:160px;transform:scaleX(-1) rotate(-10deg); }
+.invitation-copy { position:relative; z-index:1; display:flex; align-items:center; flex-direction:column; padding:42px 46px 0; text-align:center; }
+.crest { display:flex; align-items:center; gap:12px; margin-bottom:12px; color:#a28a4b; }.crest span { font-size:14px; }.crest b { display:grid; place-items:center; width:31px;height:31px;border:1px solid #b89a59;border-radius:50%;font-weight:500;font-size:17px; }
+.eyebrow { margin:0; color:#75632e; font-size:13px; font-weight:600; letter-spacing:.2em; }
+.couple-names { display:flex; flex-direction:column; gap:0; margin:17px 0 0; color:#5b501e; font-size:clamp(40px, 9vw, 62px); font-weight:500; line-height:.98; letter-spacing:-.025em; }.couple-names em { margin:2px 0 5px; color:#9b7e39; font-family:'Great Vibes',cursive; font-size:43px; font-weight:400; line-height:.9; }
+.gold-divider { display:flex; align-items:center; justify-content:center; gap:9px; width:190px; margin:16px 0 12px; color:#b29451; font-size:23px; }.gold-divider i { height:1px; flex:1; background:linear-gradient(90deg,transparent,#b29451); }.gold-divider i:last-child { transform:scaleX(-1); }
+.invite-message { margin:0; color:#655829; font-size:19px; font-style:italic; line-height:1.25; }.event-month { margin:25px 0 5px; color:#615222; font-size:17px; font-weight:700; letter-spacing:.2em; }.date-row { width:100%; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px; max-width:360px; }.date-row strong { color:#645322; font-size:57px; font-weight:500; line-height:.95; }.date-side { padding:5px 2px; border-top:1px dotted #a48b4d; border-bottom:1px dotted #a48b4d; color:#665a31; font-size:clamp(11px,2.6vw,15px); font-weight:600; letter-spacing:.1em; white-space:nowrap; }.event-year { margin:4px 0 0; color:#645322; font-size:22px; font-weight:600; }
+.venue-block { margin-top:22px; }.venue-label { margin:0 0 5px; color:#8a7136; font-size:11px; font-weight:700; letter-spacing:.18em; }.venue-name { margin:0; color:#584d22; font-size:24px; font-weight:600; }.venue-address { margin:1px 0 0; color:#625632; font-size:18px; }.family-signoff { margin:19px 0 0; color:#5e5226; font-size:23px; font-style:italic; font-weight:600; }
+.palace-art { display:block; width:calc(100% + 40px); max-width:460px; margin-top:8px; overflow:visible; }.palace-line { fill:none; stroke:#b99b5e; stroke-width:1.5; }.palace-dome { fill:none; stroke:#b99b5e; stroke-width:1.8; }.palace-fill { fill:#e9d8b7; stroke:#b99b5e; stroke-width:1.2; }.palace-flower { fill:none; stroke:#7d8950; stroke-width:3; stroke-linecap:round; }.palace-dot { fill:#c69168; }
+.floating-petal { position:absolute; z-index:2; color:#c48368; font-size:15px; opacity:.55; animation: drift 7s ease-in-out infinite; }.petal-one { top:33%;left:19%; }.petal-two { top:47%;right:18%;font-size:11px;animation-delay:2s; }
+.details-panel { position:relative; margin-top:22px; padding:32px 30px 26px; border:1px solid #c5aa70; background:rgba(255,251,242,.84); text-align:center; box-shadow:0 12px 36px #654f2010; }.details-panel::before { position:absolute;inset:6px;content:'';border:1px solid rgba(197,170,112,.45);pointer-events:none; }.details-ornament { color:#ad9254;font-size:20px; }.details-panel h2 { margin:5px 0 18px; color:#625323; font-size:32px; font-weight:500; }
+.countdown-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }.countdown-cell { padding:12px 3px 9px; border:1px solid #d4c092; background:#faf4e8; }.countdown-value { color:#645522; font-size:30px; font-weight:600; line-height:1; font-variant-numeric:tabular-nums; }.countdown-label { margin-top:5px; color:#827043; font-family:Arial,sans-serif; font-size:9px; letter-spacing:.12em; text-transform:uppercase; }
+.details-divider { display:flex;align-items:center;justify-content:center; height:35px;color:#ae9254;font-size:23px; }.details-divider::before,.details-divider::after { width:70px;height:1px;background:#d2bf91;content:''; }.details-divider span { padding:0 10px; }
+.venue-detail { display:flex;align-items:center;justify-content:center;gap:12px;text-align:left; }.detail-icon { display:grid;place-items:center;width:40px;height:40px;border:1px solid #c8ae72;border-radius:50%;color:#92783d; }.venue-detail strong { color:#5c4f23;font-size:19px;font-weight:600; }.venue-detail p { margin:2px 0 0;color:#786a43;font-size:16px; }.venue-detail .venue-label { margin:0 0 2px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:.14em; }
+.map-button { display:flex;align-items:center;justify-content:center;gap:9px;width:max-content;margin:20px auto 0;padding:11px 18px;border:1px solid #927a42;background:#66582b;color:#fff9e9;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;letter-spacing:.07em;transition:all .2s ease; }.map-button:hover { background:transparent;color:#66582b; }.details-note { display:flex;align-items:center;justify-content:center;gap:6px;margin:18px 0 0;color:#8a784a;font-size:14px;font-style:italic; }
+.rise { animation: rise .9s ease-out both; }.details-panel { animation-delay:.12s; }
+@keyframes rise { from { opacity:0;transform:translateY(16px); } to { opacity:1;transform:translateY(0); } } @keyframes drift { 0%,100% { transform:translate3d(0,0,0) rotate(0); } 50% { transform:translate3d(12px,20px,0) rotate(45deg); } } @keyframes wave { to { transform:scaleY(.35); } }
+@media (max-width:520px) { .page-shell { padding:67px 12px 20px; }.music-button { top:12px;right:12px;padding:8px 12px;font-size:12px; }.invite-card { min-height:710px; }.invitation-copy { padding:31px 29px 0; }.card-floral,.card-sprig { width:112px; }.floral-left,.floral-right { top:170px; }.sprig-left,.sprig-right { bottom:125px; }.eyebrow { font-size:10px; }.couple-names { margin-top:14px; }.invite-message { font-size:17px; }.event-month { margin-top:22px; }.date-row { gap:6px; }.date-row strong { font-size:48px; }.venue-block { margin-top:18px; }.venue-name { font-size:21px; }.venue-address { font-size:16px; }.family-signoff { font-size:20px; }.palace-art { margin-top:7px; }.details-panel { padding:27px 19px 22px; } }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important; } }
+
+/* The invitation begins at a palace entrance: the doors are the first interaction. */
+.page-shell:has(.gate-scene) { min-height:100svh; padding:0; display:grid; place-items:center; background:radial-gradient(ellipse at 50% 30%,#fbf2df 0,#e5d1a8 57%,#92794d 145%); }
+.page-shell.page-entered { display:block; min-height:100vh; padding:0; }
+.gate-scene { position:relative; isolation:isolate; display:flex; align-items:center; justify-content:center; width:100%; min-height:100svh; overflow:hidden; padding:35px 18px 145px; }
+.gate-scene::before { position:absolute;z-index:-2;inset:0;content:'';opacity:.23;background:repeating-linear-gradient(45deg,transparent 0 28px,#fff4d4 29px 30px,transparent 31px 58px),repeating-linear-gradient(-45deg,transparent 0 28px,#fff4d4 29px 30px,transparent 31px 58px);mask-image:linear-gradient(to bottom,transparent,black 23%,black 72%,transparent); }
+.gate-sky { position:absolute;top:7%;left:50%;display:flex;align-items:center;gap:clamp(45px,12vw,170px);transform:translateX(-50%);color:#fff1c5;font-size:17px;text-shadow:0 0 15px #fff0bc;animation:sky-twinkle 3s ease-in-out infinite alternate; }
+.gate-palace { position:absolute;z-index:-1;bottom:75px;left:50%;width:min(900px,115vw);height:420px;transform:translateX(-50%);opacity:.55; }
+.gate-palace-body { position:absolute;bottom:20px;left:20%;width:60%;height:230px;border:1px solid #947c4b;border-bottom:0;background:linear-gradient(90deg,#d6bf91,#f8ebd0 23%,#d7c294 50%,#f8ebd0 77%,#d6bf91);box-shadow:inset 0 0 35px #8a70401f; }
+.gate-palace-body::before,.gate-palace-body::after { position:absolute;top:-67px;width:35%;height:67px;border:1px solid #9e8756;border-radius:100% 100% 0 0 / 100% 100% 0 0;background:#e8d8b5;content:''; }.gate-palace-body::before {left:3%;}.gate-palace-body::after {right:3%;}
+.gate-balcony { position:absolute;top:40px;left:0;width:100%;height:52px;border:1px solid #ad9662;border-width:2px 0;background:repeating-linear-gradient(90deg,transparent 0 24px,#ad9662 25px 27px,transparent 28px 52px); }
+.gate-inner-arch { position:absolute;bottom:0;left:50%;width:28%;height:145px;transform:translateX(-50%);border:2px solid #947c4b;border-bottom:0;border-radius:100% 100% 0 0 / 52% 52% 0 0;background:linear-gradient(90deg,#d1bb8c,#f7e9c8,#d1bb8c); }.gate-inner-arch i {position:absolute;inset:13px 13px 0;border:1px solid #b39a62;border-bottom:0;border-radius:100% 100% 0 0 / 52% 52% 0 0;}
+.gate-distant-dome { position:absolute;bottom:248px;width:100px;height:97px;border:1px solid #9d8552;border-radius:100% 100% 0 0/100% 100% 0 0;background:linear-gradient(90deg,#d9c69d,#f7eacf,#d9c69d); }.dome-a {left:14%;}.dome-b {right:14%;}.gate-distant-dome::before {position:absolute;top:-21px;left:48px;width:1px;height:21px;background:#9d8552;content:'';}
+.gate-step {position:absolute;bottom:0;left:50%;height:15px;transform:translateX(-50%);border:1px solid #a68d57;background:#d7c196;}.step-one {width:52%;}.step-two {bottom:-14px;width:65%;}
+.gate-portal { position:relative;z-index:2;width:min(390px,78vw);height:min(490px,59svh);min-height:340px;perspective:1400px;filter:drop-shadow(0 18px 26px #41331845); }
+.portal-arch { position:absolute;inset:0 0 -1px;border:8px solid #8e713c;border-bottom:0;border-radius:50% 50% 0 0 / 25% 25% 0 0;background:linear-gradient(90deg,#ab8b4d,#e5ca85 12%,#90703b 19%,#e8d295 50%,#90703b 81%,#e5ca85 88%,#ab8b4d);box-shadow:inset 0 0 0 3px #f1db9d,inset 0 0 0 9px #876a39; }
+.portal-arch::before {position:absolute;inset:11px 12px -3px;border:2px solid #eddaa9;border-bottom:0;border-radius:50% 50% 0 0 / 25% 25% 0 0;content:'';}
+.portal-light { position:absolute;inset:24px 26px 0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;border-radius:50% 50% 0 0 / 25% 25% 0 0;background:radial-gradient(ellipse at center,#fff9e4 0,#e9d49e 47%,#b5995d 100%);color:#756035; }
+.portal-glow { color:#fffbe5;font-size:70px;text-shadow:0 0 25px #fff,0 0 50px #ffdc82;animation:portal-pulse 2.5s ease-in-out infinite; }.portal-hint {font-size:13px;font-style:italic;letter-spacing:.1em;opacity:.88;}
+.gate-door { position:absolute;top:24px;bottom:0;width:50%;overflow:hidden;border:2px solid #e4ca84;background:linear-gradient(90deg,#50351e,#74502c 13%,#53391f 17%,#92693a 47%,#654626 52%,#936c3b 86%,#55371d);box-shadow:inset 0 0 0 4px #b18b4c,inset 0 0 0 7px #593a20,inset 0 0 38px #28190e66;cursor:pointer;transition:transform 1.05s cubic-bezier(.72,0,.22,1),filter .3s; }
+.gate-door::before {position:absolute;inset:14px;border:1px solid #d1ad60;border-radius:50% 50% 0 0 / 17% 17% 0 0;content:'';box-shadow:inset 0 0 0 5px #684722,inset 0 0 0 6px #bc964f;}
+.gate-door::after {position:absolute;inset:26px 22px 12px;border:1px solid #c6a35d;border-radius:50% 50% 0 0 / 16% 16% 0 0;content:'';background:repeating-linear-gradient(0deg,transparent 0 37px,#c4a15a 38px 40px,transparent 41px 75px),repeating-linear-gradient(90deg,transparent 0 34px,#c4a15a 35px 37px,transparent 38px 70px);opacity:.52;}
+.door-left {left:0;transform-origin:left center;border-radius:48% 0 0 0 / 16% 0 0 0;}.door-right {right:0;transform-origin:right center;border-radius:0 48% 0 0 / 0 16% 0 0;}.door-left::before {border-radius:100% 0 0 0/30% 0 0 0;}.door-right::before {border-radius:0 100% 0 0/0 30% 0 0;}.door-left::after {border-radius:100% 0 0 0/30% 0 0 0;}.door-right::after {border-radius:0 100% 0 0/0 30% 0 0;}
+.door-medallion {position:absolute;z-index:2;top:49%;left:50%;display:grid;place-items:center;width:42px;height:42px;transform:translate(-50%,-50%);border:1px solid #e4c777;border-radius:50%;background:radial-gradient(circle,#9c7842,#50361f);color:#f6dfa0;font-size:20px;box-shadow:0 0 0 4px #5c3e23,0 0 0 5px #d2ad61;}.door-handle {position:absolute;z-index:3;top:57%;right:14px;width:7px;height:7px;border-radius:50%;background:#ebd181;box-shadow:0 0 8px #e8ca7b;}.door-left .door-handle {right:10px;}.door-right .door-handle {left:10px;right:auto;}
+.door-grille {position:absolute;inset:35px 30px;z-index:1;opacity:.2;background:repeating-linear-gradient(45deg,transparent 0 11px,#e8cc82 12px 13px,transparent 14px 22px);}
+.gate-invitation-button {position:absolute;z-index:6;left:50%;bottom:22px;display:flex;align-items:center;gap:9px;transform:translateX(-50%);width:max-content;max-width:90%;padding:13px 18px;border:1px solid #f3dc9a;border-radius:999px;background:linear-gradient(135deg,#53371e,#8b6736);color:#fff3d1;font-family:Arial,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;box-shadow:0 6px 22px #25190b66;cursor:pointer;transition:transform .25s,background .25s;}.gate-invitation-button:hover {transform:translateX(-50%) translateY(-3px);background:linear-gradient(135deg,#76562d,#a88648);}.button-sparkle {font-size:18px;}.button-arrow {font-size:18px;transition:transform .2s;}.gate-invitation-button:hover .button-arrow {transform:translateX(3px);}
+.gate-welcome {position:absolute;z-index:3;top:7%;left:50%;width:min(540px,90%);transform:translateX(-50%);text-align:center;color:#6a5528;text-shadow:0 1px #fff8e7;}.gate-kicker {font-family:Arial,sans-serif;font-size:10px;letter-spacing:.28em;}.gate-welcome h1 {margin:8px 0 2px;font-size:clamp(28px,5vw,44px);font-weight:500;line-height:1.05;}.gate-welcome p {margin:5px 0;color:#836f40;font-size:16px;font-style:italic;}.gate-flourish {color:#ab9053;font-size:17px;}
+.gate-floor {position:absolute;z-index:-1;bottom:0;left:-10%;width:120%;height:110px;border-top:1px solid #9a804b;background:repeating-linear-gradient(90deg,transparent 0 68px,#a58d5b33 69px 70px),linear-gradient(#d5c196,#b9a271);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);}
+.gate-scene-opening .door-left {transform:rotateY(-112deg);filter:brightness(.72);}.gate-scene-opening .door-right {transform:rotateY(112deg);filter:brightness(.72);}.gate-scene-opening .gate-invitation-button {opacity:0;transition:opacity .25s;}.gate-scene-opening .gate-welcome {animation:welcome-out .45s ease both;}.page-entered {animation:page-arrive .8s ease-out both;}
+.invitation-experience {position:relative;z-index:1;padding:56px 20px 26px;}.invitation-experience .invitation-wrap {animation:reveal-card 1s cubic-bezier(.17,.67,.32,1) both;}.invitation-experience .invite-card {box-shadow:0 28px 85px #654f2028,0 0 0 7px #fff7e1,0 0 0 8px #b89a59;}
+@keyframes portal-pulse {50%{transform:scale(1.08);opacity:.75}}@keyframes sky-twinkle {to{opacity:.45;transform:translateX(-50%) translateY(5px)}}@keyframes welcome-out {to{opacity:0;transform:translate(-50%,-12px)}}@keyframes page-arrive {from{opacity:.5}to{opacity:1}}@keyframes reveal-card {from{opacity:0;transform:translateY(42px) scale(.97);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
+@media(max-width:520px) { .gate-scene {padding:95px 10px 110px;}.gate-welcome {top:5%;}.gate-kicker {font-size:8px;}.gate-welcome h1 {font-size:31px;}.gate-welcome p {font-size:14px;}.gate-portal {width:min(340px,86vw);height:50svh;min-height:320px;max-height:440px;}.gate-palace {bottom:72px;height:300px;width:130vw;}.gate-palace-body {height:175px;bottom:15px;}.gate-palace-body::before,.gate-palace-body::after {top:-48px;height:48px;}.gate-distant-dome {bottom:188px;width:72px;height:70px;}.gate-distant-dome::before {left:35px;height:15px;top:-15px;}.gate-inner-arch {height:110px;}.gate-step {height:12px;}.step-two {bottom:-11px;}.portal-hint {font-size:10px;}.portal-glow {font-size:53px;}.gate-invitation-button {bottom:17px;padding:12px 13px;font-size:9px;letter-spacing:.1em;}.invitation-experience {padding:65px 12px 20px;}.invitation-experience .music-button {position:fixed;}.gate-floor {height:90px;} }
+
+/* Blush, mauve and plum bring the original pink palette into a cleaner card UI. */
+:root { color:#52365d;background:#f6edf5; }
+.page-shell { background:radial-gradient(ellipse at 15% 5%,#fff8fb 0,#f8edf6 43%,#e9def0 100%); }
+.page-shell:has(.gate-scene) { background:radial-gradient(ellipse at 50% 27%,#fff6fb 0,#e9d8ed 55%,#ac91b6 145%); }
+.page-shell::before { opacity:.14;background-image:radial-gradient(#a984ac .65px,transparent .65px); }
+.ambient { border-color:#a981aa26; }.ambient::before,.ambient::after {border-color:#a981aa20;}
+.music-button { border-color:#c295b9aa;background:#fff9f7e8;color:#65436b;box-shadow:0 8px 26px #68457217; }
+.music-button:hover {background:#fff;border-color:#98689f;}.sound-waves i {background:#98689f;}
+.invite-card { min-height:800px;border:1px solid #c18eb9;border-radius:22px;background:linear-gradient(145deg,#fff9f4 0%,#fdf1f4 45%,#f4eaf6 100%);box-shadow:0 28px 80px #51365d25,0 0 0 7px #fff8fb,0 0 0 8px #c295b9;transition:transform .35s ease,box-shadow .35s ease; }
+.invite-card:hover {transform:translateY(-3px);box-shadow:0 34px 90px #51365d30,0 0 0 7px #fff8fb,0 0 0 8px #c295b9;}
+.invite-card::before {inset:10px;border-color:#d8b5d4;border-radius:15px;}.invite-card::after {inset:16px;border-color:#d8b5d455;border-radius:11px;}
+.card-pattern { opacity:.13; }
+.card-floral {opacity:.88;}
+.crest,.crest b {color:#9c70a2;}.crest b {border-color:#c08fbc;}
+.eyebrow {color:#7c5681;}
+.couple-names {color:#583963;}.couple-names em {color:#a1649a;}
+.gold-divider {color:#bb83ad;}.gold-divider i {background:linear-gradient(90deg,transparent,#c89bc0);}
+.invite-message {color:#674a6d;}
+.event-month,.date-row strong,.event-year {color:#624267;}.date-side {border-color:#b787b2;color:#694a6c;}
+.venue-label {color:#986896;}.venue-name {color:#51365d;}.venue-address {color:#6c5271;}.family-signoff {color:#6b4a71;}
+.palace-line,.palace-dome {stroke:#b786a7;}.palace-fill {fill:#f0d9e7;stroke:#b786a7;}.palace-flower {stroke:#9a7999;}.palace-dot {fill:#cf8c9f;}
+.floating-petal {color:#c16d9f;}
+.details-panel {border:1px solid #d0a8ca;border-radius:20px;background:linear-gradient(145deg,#fffafc,#f9f0f8);box-shadow:0 15px 40px #56376016;transition:transform .25s ease,box-shadow .25s ease;}
+.details-panel:hover {transform:translateY(-2px);box-shadow:0 20px 48px #56376020;}.details-panel::before {inset:6px;border-color:#debfe0;border-radius:14px;}
+.details-ornament,.details-divider {color:#a26da0;}.details-panel h2 {color:#5d3e67;}
+.countdown-cell {border:1px solid #dfc1dc;border-radius:13px;background:linear-gradient(145deg,#fffafd,#f3e7f3);box-shadow:0 4px 10px #7b54800b;}.countdown-value {color:#614069;}.countdown-label {color:#94749a;}
+.details-divider::before,.details-divider::after {background:#dcc1d8;}
+.detail-icon {border-color:#d6b4d1;color:#98669c;background:#fcf5fb;}.venue-detail strong {color:#583963;}.venue-detail p {color:#806a84;}.venue-detail .venue-label {color:#986896;}
+.map-button {border:1px solid #8d6494;border-radius:999px;background:linear-gradient(120deg,#73517b,#986d99);color:white;box-shadow:0 7px 18px #714e791e;}.map-button:hover {background:#fff;color:#73517b;}
+.details-note {color:#927097;}
+.gate-welcome {color:#603f6b;}.gate-welcome p {color:#87618c;}.gate-flourish {color:#a66da3;}
+.gate-sky {color:#fff8ff;text-shadow:0 0 15px #efc9f8;}
+.gate-palace-body {border-color:#9a739e;background:linear-gradient(90deg,#dcc3e1,#faf0f9 23%,#e0c8e2 50%,#faf0f9 77%,#dcc3e1);}
+.gate-palace-body::before,.gate-palace-body::after {border-color:#a884aa;background:#f1dfef;}.gate-balcony {border-color:#ae8bb1;background:repeating-linear-gradient(90deg,transparent 0 24px,#ae8bb1 25px 27px,transparent 28px 52px);}
+.gate-inner-arch {border-color:#976e99;background:linear-gradient(90deg,#d9c0df,#f9eafa,#d9c0df);}.gate-inner-arch i {border-color:#b18ab4;}
+.gate-distant-dome {border-color:#a581a6;background:linear-gradient(90deg,#e1cce4,#fff4fb,#e1cce4);}.gate-distant-dome::before {background:#a581a6;}
+.gate-step {border-color:#a47fa7;background:#dcc6de;}.gate-floor {border-color:#98779d;background:repeating-linear-gradient(90deg,transparent 0 68px,#98779d33 69px 70px),linear-gradient(#e1cfe4,#c4a9ca);}
+.portal-arch {border-color:#916997;background:linear-gradient(90deg,#98699b,#e5c8e4 12%,#926392 19%,#f3d9ec 50%,#926392 81%,#e5c8e4 88%,#98699b);box-shadow:inset 0 0 0 3px #f9e6f2,inset 0 0 0 9px #805985;}
+.portal-arch::before {border-color:#f8e4f0;}.portal-light {background:radial-gradient(ellipse at center,#fff9ff 0,#efdaf1 47%,#b993c0 100%);color:#754e7b;}.portal-glow {color:white;text-shadow:0 0 25px #fff,0 0 50px #f8c8fa;}
+.gate-door {border-color:#e3c1e1;background:linear-gradient(90deg,#422b4d,#754d78 13%,#523659 17%,#986c9b 47%,#67456d 52%,#986c9b 86%,#523459);box-shadow:inset 0 0 0 4px #bd93be,inset 0 0 0 7px #59385f,inset 0 0 38px #28122e66;}
+.gate-door::before {border-color:#d8b2d4;box-shadow:inset 0 0 0 5px #67446c,inset 0 0 0 6px #c39bc4;}.gate-door::after {border-color:#c7a2c9;background:repeating-linear-gradient(0deg,transparent 0 37px,#c4a1c4 38px 40px,transparent 41px 75px),repeating-linear-gradient(90deg,transparent 0 34px,#c4a1c4 35px 37px,transparent 38px 70px);}.door-grille {background:repeating-linear-gradient(45deg,transparent 0 11px,#f0d7eb 12px 13px,transparent 14px 22px);}
+.door-medallion {border-color:#ead0e6;background:radial-gradient(circle,#a277a6,#503357);color:#fff2fd;box-shadow:0 0 0 4px #65446a,0 0 0 5px #d1afd2;}.door-handle {background:#f2d4ec;box-shadow:0 0 8px #f2d4ec;}
+.gate-invitation-button {border-color:#f6d9f1;background:linear-gradient(135deg,#58375f,#956c98);box-shadow:0 8px 24px #3b244c55;}.gate-invitation-button:hover {background:linear-gradient(135deg,#704b78,#a47ba5);}
+.invitation-experience .invite-card {box-shadow:0 28px 85px #51365d29,0 0 0 7px #fff8fb,0 0 0 8px #c295b9;}
+@media(max-width:520px) { .invite-card {min-height:710px;border-radius:18px;} }
+
+/* Layered palace illustration and carved timber panels replace the flat gate geometry. */
+.gate-scene { background:radial-gradient(ellipse at 50% 34%,#fff7fd 0,#ecdcef 42%,#c8add0 100%); }
+.gate-scene::before { opacity:.18;background:radial-gradient(ellipse at 50% 48%,transparent 18%,#684b7526 100%),linear-gradient(180deg,#fff8ff66,transparent 38%,#49395844); }
+.gate-palace {position:absolute;z-index:-1;inset:0;width:100%;height:100%;left:0;bottom:auto;transform:none;max-width:none;opacity:.91;filter:saturate(.86) contrast(.96);}
+.gate-door {top:24px;bottom:0;width:50%;border-width:1px;background:linear-gradient(90deg,#382431 0%,#563446 3%,#80536a 7%,#492c3e 10%,#684152 17%,#4c2e40 23%,#795169 30%,#593448 39%,#452738 50%,#724a61 62%,#4e3042 73%,#7f526b 84%,#563448 92%,#392432 100%);box-shadow:inset 0 0 0 2px #c7a0bd,inset 0 0 0 5px #553649,inset 0 0 0 7px #d0aac2,inset 0 0 0 9px #5a374d,inset 0 0 0 15px #583748,inset 0 0 38px #21121c99,0 7px 14px #25172b88;}
+.gate-door::before {inset:19px 16px;border:1px solid #cba5c2;border-radius:48% 48% 4px 4px/18% 18% 4px 4px;box-shadow:inset 0 0 0 4px #5c394e,inset 0 0 0 5px #ba91b3,inset 0 0 0 10px #613b50,inset 0 0 17px #25162988;}
+.gate-door::after {inset:31px 29px 16px;border:1px solid #cca5c2;border-radius:45% 45% 3px 3px/16% 16% 3px 3px;background:linear-gradient(90deg,#d2a8c020,transparent 23%,#f6ddee0a 50%,transparent 78%,#d2a8c020);opacity:.72;}
+.door-carving {position:absolute;z-index:2;inset:17px 4px 5px;width:calc(100% - 8px);height:calc(100% - 22px);fill:none;stroke:#e6c5d7;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 2px #291629);opacity:.82;}
+.door-right .door-carving {transform:scaleX(-1);}
+.door-medallion {top:51%;width:34px;height:34px;border:1px solid #f3d9b6;background:radial-gradient(circle at 35% 30%,#e7bd7c,#a87359 60%,#4f354a);color:#fff0cb;font-size:16px;box-shadow:0 0 0 3px #573649,0 0 0 4px #d5af84,0 3px 6px #28152b;}
+.door-handle {top:53%;width:9px;height:9px;background:radial-gradient(circle at 35% 30%,#fff3c9,#d6a966 55%,#704d59);box-shadow:0 0 0 2px #483149,0 0 8px #f1d8a4;}
+.door-left .door-handle {right:8px;}.door-right .door-handle {left:8px;}
+.door-grille {display:none;}
+.portal-arch {filter:drop-shadow(0 0 9px #fff0fa99);}
+.gate-palace-body,.gate-distant-dome,.gate-floor {display:none;}
+.gate-invitation-button {background:linear-gradient(135deg,#49304f,#805b85);border-color:#f2d7ea;}
+@media(max-width:520px) { .gate-palace {width:100%;height:100%;}.door-carving {inset:18px 2px 4px;width:calc(100% - 4px);height:calc(100% - 22px);} }
+
+/* Final luxury pass: restrained champagne metal, soft illumination, crisp type. */
+.page-shell {background:radial-gradient(ellipse at 50% 0%,#fffafd 0,#f8eff7 46%,#e9def0 100%);}
+.page-shell:has(.gate-scene) {background:radial-gradient(ellipse at 50% 31%,#fff8fd 0,#ead9ed 48%,#a88dad 150%);}
+.gate-scene::after {position:absolute;z-index:0;inset:0;pointer-events:none;content:"";background:linear-gradient(180deg,#fff4fa22,transparent 38%,#32213b30),radial-gradient(ellipse at center,transparent 38%,#35263d40 100%);}
+.gate-palace {opacity:.96;filter:saturate(.78) contrast(1.04) drop-shadow(0 18px 25px #49304d26);}
+.gate-portal {filter:drop-shadow(0 22px 32px #39243f55);}
+.portal-arch {border-width:9px;background:linear-gradient(90deg,#85618c,#e6cce4 10%,#875e8c 18%,#f1dfed 50%,#875e8c 82%,#e6cce4 90%,#85618c);box-shadow:inset 0 0 0 2px #fff1f7,inset 0 0 0 5px #d2b0d0,inset 0 0 0 9px #73517b,0 0 0 1px #fff5f9;}
+.portal-light {background:radial-gradient(ellipse at 50% 38%,#fffdf8 0,#f5e4f2 40%,#bd9bc5 100%);}
+.portal-glow {color:#fffdf4;text-shadow:0 0 18px white,0 0 42px #ffe6a9,0 0 70px #f7d6ff;}
+.gate-door {background:linear-gradient(90deg,#291c2e 0%,#5c3b50 3%,#90647b 6%,#56364c 10%,#744b62 16%,#4d3044 24%,#80566c 31%,#58374e 40%,#432a3c 50%,#795068 62%,#4d3144 74%,#90627a 85%,#57364a 93%,#302033 100%);box-shadow:inset 0 0 0 2px #d7b5ce,inset 0 0 0 5px #52334a,inset 0 0 0 7px #e1bfd5,inset 0 0 0 9px #5b3852,inset 0 0 0 15px #553649,inset 0 0 38px #1c112288,0 10px 22px #24142e99;}
+.gate-door::before {border-color:#dec2d8;box-shadow:inset 0 0 0 4px #54334b,inset 0 0 0 5px #d0aaca,inset 0 0 0 10px #5e3a54,inset 0 0 20px #22142999;}
+.door-carving {stroke:#f0d9e9;filter:drop-shadow(0 1px 1px #291729) drop-shadow(0 0 3px #e5c8dd66);opacity:.92;}
+.door-medallion {border-color:#f2dcae;background:radial-gradient(circle at 33% 28%,#ffe8b0,#d0a36d 42%,#895866 72%,#53354d);box-shadow:0 0 0 3px #563950,0 0 0 4px #e3c194,0 3px 9px #211528;}
+.door-handle {background:radial-gradient(circle at 35% 30%,#fff6d9,#e5bd7b 52%,#8f5e66);box-shadow:0 0 0 2px #4a3047,0 0 10px #ffe6ae;}
+.gate-invitation-button {border:1px solid #edd2e6;background:linear-gradient(135deg,#422c4b,#795782 58%,#966e97);box-shadow:0 9px 24px #38244366,inset 0 1px #fff4;}
+.gate-invitation-button:hover {box-shadow:0 13px 29px #38244377,inset 0 1px #fff5;}
+.invite-card {border-color:#bc8db9;background:linear-gradient(148deg,#fffaf7 0%,#fff5f5 37%,#f7eff8 100%);box-shadow:0 32px 85px #4d345921,0 0 0 5px #fffafd,0 0 0 6px #cb9fc4,0 0 0 8px #fff7fb;}
+.invite-card::before {border-color:#d9b5d3;}.invite-card::after {border-color:#e2c7df77;}
+.card-pattern {opacity:.09;}
+.invitation-copy {padding-top:38px;}
+.crest b {background:linear-gradient(145deg,#fff8f5,#f2e5f3);box-shadow:0 2px 9px #8e64900f;}
+.eyebrow {font-family:Arial,sans-serif;font-size:10px;letter-spacing:.23em;color:#87628b;}
+.invitation-ribbon {margin-top:17px;padding:5px 13px 4px;border:1px solid #d6b5ce;border-radius:999px;background:linear-gradient(90deg,#fff8f6,#f8eef7,#fff8f6);color:#926b91;font-family:Arial,sans-serif;font-size:9px;letter-spacing:.22em;}
+.couple-names {margin-top:14px;color:#4f365a;letter-spacing:-.035em;text-shadow:0 2px 16px #7957820c;}
+.couple-names em {color:#a2659a;}
+.gold-divider {margin-top:19px;color:#b18a75;}.gold-divider i {background:linear-gradient(90deg,transparent,#cba98f);}
+.event-month {color:#77527c;font-size:14px;letter-spacing:.26em;}
+.date-row strong {color:#5a3c65;text-shadow:0 2px 12px #704d7912;}
+.date-side {border-color:#ca9dbf;color:#79547c;font-size:10px;letter-spacing:.13em;}
+.event-year {color:#745078;font-size:18px;letter-spacing:.14em;}
+.venue-block {margin-top:20px;padding:13px 23px 12px;border-top:1px solid #dfc4d9;border-bottom:1px solid #dfc4d9;background:linear-gradient(90deg,transparent,#fff8f777,transparent);}
+.venue-label {font-family:Arial,sans-serif;font-size:9px;letter-spacing:.2em;color:#a17a9e;}
+.venue-name {font-size:21px;letter-spacing:.01em;color:#573b60;}.venue-address {font-size:16px;color:#7b6280;}
+.family-signoff {margin-top:17px;color:#855d83;font-size:21px;}
+.details-panel {border-color:#d6b6d2;background:linear-gradient(145deg,#fffafd,#faf2f8 72%,#f4eaf5);box-shadow:0 18px 45px #573a6415, inset 0 1px #fff;backdrop-filter:blur(12px);}
+.details-panel h2 {font-size:30px;color:#583b63;}
+.countdown-cell {border-color:#e0cadd;background:linear-gradient(150deg,#fffdfd,#f5edf6);box-shadow:0 5px 14px #573a640d,inset 0 1px #fff;}
+.countdown-value {font-size:28px;color:#63456e;}.countdown-label {font-size:8px;letter-spacing:.15em;}
+.map-button {background:linear-gradient(110deg,#62456c,#8c678f);border-color:#745579;box-shadow:0 9px 19px #5c416522,inset 0 1px #ffffff30;letter-spacing:.09em;}
+.music-button {border-color:#d3b3d1;background:#fffafdE8;color:#684c70;box-shadow:0 9px 28px #4c335315,inset 0 1px #fff;backdrop-filter:blur(16px);}
+@media(max-width:520px) { .invitation-copy {padding-top:30px;}.eyebrow {font-size:8px;}.invitation-ribbon {margin-top:13px;font-size:8px;}.venue-block {padding:11px 12px;}.venue-name {font-size:19px;}.couple-names {margin-top:12px;} }
+.music-control-wrap {position:fixed;z-index:5;top:18px;right:max(18px,calc((100vw - 700px)/2));display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.music-control-wrap .music-button {position:static;top:auto;right:auto;}
+.music-attribution {padding-right:9px;color:#9a829b;font-family:Arial,sans-serif;font-size:8px;letter-spacing:.015em;text-decoration:none;opacity:.8;transition:opacity .2s,color .2s;}
+.music-attribution:hover {color:#76527c;opacity:1;text-decoration:underline;text-underline-offset:2px;}
+.contact-card {display:flex;align-items:center;gap:12px;width:min(100%,390px);margin:18px auto 0;padding:12px 15px;border:1px solid #e3cddd;border-radius:15px;background:linear-gradient(110deg,#fffafd,#f7eef7);color:#5b4164;text-align:left;text-decoration:none;box-shadow:0 7px 18px #573a640c,inset 0 1px #fff;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;}
+.contact-card:hover {transform:translateY(-2px);border-color:#c7a2c5;box-shadow:0 11px 24px #573a6418,inset 0 1px #fff;}
+.contact-card .detail-icon {width:37px;height:37px;flex:0 0 37px;background:linear-gradient(145deg,#fff,#f5eaf5);}
+.contact-copy {display:flex;flex-direction:column;gap:2px;flex:1;}.contact-copy small {color:#997c9d;font-family:Arial,sans-serif;font-size:8px;letter-spacing:.17em;}.contact-copy strong {color:#5d4167;font-size:20px;font-weight:600;letter-spacing:.035em;}
+.contact-call {display:flex;align-items:center;gap:4px;padding:7px 10px;border:1px solid #e4d2e2;border-radius:999px;color:#805b87;font-family:Arial,sans-serif;font-size:10px;letter-spacing:.04em;}
+.details-note {margin-top:15px;}
+.details-panel {padding-bottom:23px;}
+.contact-card:focus-visible,.map-button:focus-visible {outline-color:#a46b9e;}
+@media(max-width:520px) { .music-control-wrap {top:12px;right:12px;}.invitation-experience .music-control-wrap {position:fixed;top:12px;right:12px;}.invitation-experience .music-control-wrap .music-button {position:static;top:auto;right:auto;}.music-attribution {font-size:7px;}.contact-card {width:100%;}.contact-copy strong {font-size:19px;} }
+
+/* Mobile invitation: comfortable thumb controls, condensed card typography, safe-area aware. */
+@media(max-width:600px) {
+  html {scroll-padding-top:18px;}
+  .page-shell.page-entered {overflow:visible;overflow-x:clip;}
+  .page-shell:has(.gate-scene) {overflow:hidden;min-height:100dvh;}
+  .invitation-experience {padding:68px 12px calc(104px + env(safe-area-inset-bottom));}
+  .invitation-wrap {width:100%;max-width:480px;}
+  .invite-card {min-height:0;border-radius:20px;box-shadow:0 20px 50px #4d345921,0 0 0 4px #fffafd,0 0 0 5px #cb9fc4,0 0 0 7px #fff7fb;}
+  .invitation-copy {padding:29px 24px 0;}
+  .card-floral,.card-sprig {width:96px;opacity:.72;}
+  .floral-left,.floral-right {top:180px;}
+  .sprig-left,.sprig-right {bottom:105px;}
+  .couple-names {font-size:clamp(32px,8.4vw,42px);line-height:1.02;}
+  .couple-names em {font-size:37px;margin:4px 0;}
+  .invite-message {font-size:16px;}
+  .event-month {margin-top:19px;font-size:12px;}
+  .date-row {max-width:330px;gap:6px;}
+  .date-row strong {font-size:45px;}
+  .date-side {font-size:9px;letter-spacing:.08em;}
+  .venue-block {margin-top:17px;padding:10px 12px;}
+  .venue-name {font-size:19px;}
+  .venue-address {font-size:15px;}
+  .family-signoff {margin-top:14px;font-size:19px;}
+  .palace-art {width:calc(100% + 30px);margin-top:6px;}
+  .details-panel {margin-top:16px;padding:24px 17px 19px;border-radius:18px;}
+  .details-panel h2 {font-size:27px;margin:3px 0 15px;}
+  .countdown-grid {gap:6px;}
+  .countdown-cell {padding:11px 2px 8px;border-radius:11px;}
+  .countdown-value {font-size:25px;}
+  .countdown-label {font-size:7px;letter-spacing:.1em;}
+  .venue-detail {justify-content:flex-start;padding:0 5px;}
+  .venue-detail strong {font-size:17px;}
+  .venue-detail p {font-size:14px;}
+  .map-button {min-height:46px;margin-top:16px;font-size:11px;}
+  .contact-card {min-height:62px;margin-top:12px;padding:10px 12px;border-radius:14px;}
+  .music-control-wrap {top:max(10px,env(safe-area-inset-top));right:11px;}
+  .music-control-wrap .music-button {min-height:40px;padding:8px 12px;font-size:11px;}
+  .music-attribution {max-width:235px;padding-right:5px;font-size:7px;}
+  .gate-scene {min-height:100dvh;padding:92px 10px calc(92px + env(safe-area-inset-bottom));}
+  .gate-welcome {top:calc(5% + env(safe-area-inset-top));}
+  .gate-kicker {font-size:8px;letter-spacing:.22em;}
+  .gate-welcome h1 {max-width:340px;margin:9px auto 3px;font-size:clamp(27px,7.5vw,34px);}
+  .gate-welcome p {font-size:14px;}
+  .gate-portal {width:min(350px,88vw);height:min(51dvh,460px);min-height:315px;}
+  .gate-invitation-button {min-height:46px;bottom:calc(17px + env(safe-area-inset-bottom));font-size:9px;}
+  .mobile-action-bar {position:fixed;z-index:9;right:12px;bottom:max(10px,env(safe-area-inset-bottom));left:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;max-width:460px;margin:0 auto;padding:6px;border:1px solid #e2cde0;border-radius:19px;background:linear-gradient(135deg,#fffcffed,#f8eff8e8);box-shadow:0 12px 32px #39294428,inset 0 1px #fff;backdrop-filter:blur(22px) saturate(1.3);}
+  .mobile-action-bar a,.mobile-action-bar button {display:flex;min-width:0;min-height:50px;align-items:center;justify-content:center;flex-direction:column;gap:3px;border:0;border-radius:13px;background:transparent;color:#75527c;text-decoration:none;font-family:Arial,sans-serif;font-size:9px;letter-spacing:.02em;-webkit-tap-highlight-color:transparent;}
+  .mobile-action-bar a:active,.mobile-action-bar button:active {transform:scale(.96);background:#f0e3f1;color:#54365e;}
+  .mobile-action-bar svg {stroke-width:1.8;}
+}
+@media(max-width:370px) {
+  .invitation-experience {padding-right:9px;padding-left:9px;}
+  .invitation-copy {padding-right:19px;padding-left:19px;}
+  .couple-names {font-size:31px;}
+  .date-row {gap:4px;}
+  .date-row strong {font-size:41px;}
+  .date-side {font-size:8px;}
+  .gate-welcome h1 {font-size:27px;}
+  .music-control-wrap .music-button {gap:6px;padding:8px 9px;}
+  .music-control-wrap .music-button span {font-size:10px;}
+}
+.heaven-backdrop {position:absolute;z-index:-1;inset:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#efc9e9,#fff2d9 58%,#e8c8e5);}
+.heaven-backdrop>svg {display:block;width:100%;height:100%;}
+.heaven-mist {position:absolute;bottom:14%;width:46vw;height:110px;border-radius:50%;background:#fff9ff8a;filter:blur(35px);animation:mist-drift 11s ease-in-out infinite alternate;}
+.mist-left {left:-13%;}.mist-right {right:-13%;animation-delay:-5.5s;}
+.gate-palace {display:none!important;}
+.gate-scene {background:linear-gradient(180deg,#efc9e9 0%,#ffe8df 46%,#efddf0 100%);}
+.gate-scene::before {opacity:.06;mask-image:linear-gradient(transparent,black 35%,transparent);}
+.gate-scene::after {background:radial-gradient(ellipse at center 35%,transparent 18%,#51435c0a 85%),linear-gradient(180deg,#fff5f822,transparent 70%,#8d69920c);}
+.gate-sky {z-index:1;color:#fffaf0;text-shadow:0 0 18px #fff6dd,0 0 34px #f4c8f0;}
+.gate-welcome {z-index:3;color:#70486f;text-shadow:0 1px 10px #fff6f5;}
+.gate-kicker {color:#956e90;}
+.gate-welcome p {color:#967496;}
+.gate-flourish {color:#b27a9e;}
+.gate-portal {z-index:2;}
+.portal-arch {background:linear-gradient(90deg,#94719b,#f3d9eb 10%,#9d72a1 18%,#fff0df 50%,#9d72a1 82%,#f3d9eb 90%,#94719b);box-shadow:inset 0 0 0 2px #fff8ed,inset 0 0 0 5px #e4c3de,inset 0 0 0 9px #815d88,0 0 26px #fff4e9aa;}
+.portal-light {background:radial-gradient(ellipse at 50% 35%,#fffef5 0,#fff2dd 26%,#f2dcef 61%,#b696c4 100%);}
+.portal-glow {animation:portal-pulse 2.5s ease-in-out infinite;}
+.gate-door {border-color:#efd4e5;box-shadow:inset 0 0 0 2px #edd2e4,inset 0 0 0 5px #57394f,inset 0 0 0 7px #e3bdd5,inset 0 0 0 9px #60405a,inset 0 0 0 15px #57364b,inset 0 0 42px #24142677,0 12px 27px #64476c44;}
+.gate-invitation-button {background:linear-gradient(120deg,#705077,#a577a1 55%,#c489a5);box-shadow:0 10px 28px #65456d55,inset 0 1px #fff7;}
+@keyframes mist-drift {to{transform:translateX(45px) scale(1.15);opacity:.58}}
+@media(max-width:600px) {
+ .heaven-backdrop {inset:-2% -17%;}
+ .heaven-backdrop>svg {width:134%;max-width:none;margin-left:-17%;}
+ .heaven-mist {bottom:12%;width:60vw;height:82px;filter:blur(25px);}
+ .gate-scene::after {background:linear-gradient(180deg,#fff4f711,transparent 68%,#fff8f733);}
+}
+.heaven-backdrop::before {position:absolute;z-index:1;inset:0;content:"";pointer-events:none;background:radial-gradient(ellipse 52% 15% at 0% 80%,#fff9ffe6 0,#efc9e5a6 58%,transparent 100%),radial-gradient(ellipse 50% 16% at 100% 81%,#fff9ffe6 0,#efc9e5a6 58%,transparent 100%),radial-gradient(ellipse 75% 20% at 50% 101%,#fff7f7d4 0,#e7c6e4a6 62%,transparent 100%);}
+.heaven-backdrop::after {position:absolute;z-index:1;top:42%;left:50%;width:min(70vw,620px);height:min(70vw,620px);transform:translate(-50%,-50%);border:1px solid #fff8f255;border-radius:50%;box-shadow:0 0 0 22px #fff8f21a,0 0 0 54px #fff8f216,0 0 70px 35px #fff7e266;content:"";pointer-events:none;}
+.heaven-backdrop .heaven-stairs {stroke:#eed3e7;stroke-width:5;opacity:.84;filter:drop-shadow(0 0 5px #fff7e8);}
+.heaven-mist {background:#fff9ffc7;}
+@media(min-width:601px) {.mobile-action-bar {display:none;}}
+.page-shell.page-entered {background:linear-gradient(180deg,#ffd0da 0%,#ffddd4 23%,#ffe9d7 57%,#f9e5df 100%);}
+.invitation-experience {isolation:isolate;}
+.sky-backdrop {position:fixed;z-index:-1;inset:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% 33%,#fff2dc55 0,transparent 34%),linear-gradient(180deg,#ffd0db 0%,#ffe3d2 57%,#f5dce8 100%);}
+.sky-backdrop::before {position:absolute;inset:0;content:"";background:radial-gradient(ellipse at 50% 20%,transparent 20%,#9e6b9b10 100%);}
+.sky-lights {position:absolute;top:0;left:0;width:100%;height:82px;overflow:visible;fill:none;stroke:#c78363;stroke-width:1.3;filter:drop-shadow(0 2px 4px #9e5e5c30);}
+.sky-lights > path {stroke:#c18b70;stroke-width:2;opacity:.72;}
+.sky-lights .light-string {stroke:#bd896c;stroke-width:1.4;}
+.light-glow {fill:#ffdc7b;stroke:#d49c42;stroke-width:2.4;filter:drop-shadow(0 0 5px #ffdf88);}
+.light-bulb {fill:#fff4bf;stroke:none;}
+.sky-mountains {position:absolute;right:0;bottom:0;left:0;width:100%;height:250px;}
+.sky-sun {fill:#f5b73d;opacity:.93;filter:drop-shadow(0 0 25px #ffc35890);}
+.mountain-back {fill:#eeb6c9;opacity:.78;}.mountain-front {fill:#e49bb8;opacity:.82;}.mountain-near {fill:#c77fa5;opacity:.77;}
+.sky-horizon {position:absolute;right:0;bottom:0;left:0;height:100px;background:linear-gradient(0deg,#ab78a233,transparent);}
+.fireworks-canvas {position:fixed;z-index:30;inset:0;width:100vw;height:100vh;pointer-events:none;}
+.celebrate-button {position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;width:min(100%,330px);margin:19px auto 0;overflow:hidden;border:1px solid #fff2d6;border-radius:999px;background:linear-gradient(115deg,#68446f,#9e6598 52%,#be7b9f);color:#fffaf2;font-family:Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.09em;box-shadow:0 10px 24px #7046752b,inset 0 1px #ffffff66;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;-webkit-tap-highlight-color:transparent;}
+.celebrate-button::before {position:absolute;z-index:-1;top:-60%;left:-45%;width:34%;height:220%;transform:rotate(25deg);background:linear-gradient(90deg,transparent,#ffffff66,transparent);content:"";transition:left .55s ease;}
+.celebrate-button:hover {transform:translateY(-2px);filter:saturate(1.08);box-shadow:0 14px 30px #7046753b,inset 0 1px #ffffff77;}
+.celebrate-button:hover::before {left:125%;}.celebrate-button:active {transform:scale(.98);}
+.action-firework {display:grid;place-items:center;width:20px;height:20px;border:1px solid #dab2d8;border-radius:50%;color:#bd83bd;font-size:13px;}
+.mobile-action-bar {grid-template-columns:repeat(4,minmax(0,1fr));}
+@media(max-width:600px) {
+  .sky-lights {height:58px;}
+  .sky-mountains {height:195px;}
+  .sky-horizon {height:85px;}
+  .celebrate-button {min-height:48px;margin-top:15px;font-size:11px;}
+  .mobile-action-bar a,.mobile-action-bar button {min-height:49px;font-size:8px;}
+  .mobile-action-bar svg {width:17px;height:17px;}
+}
+@media(max-width:370px) {.mobile-action-bar {left:8px;right:8px;padding:5px;}.mobile-action-bar a,.mobile-action-bar button {font-size:7px;}}
+@media(max-width:600px) {
+  /* Keep the player in normal flow so it never floats over invitation text. */
+  .invitation-experience {padding:12px 12px calc(110px + env(safe-area-inset-bottom));}
+  .music-control-wrap,.invitation-experience .music-control-wrap {position:relative;top:auto;right:auto;left:auto;z-index:2;display:flex;width:min(100%,480px);margin:0 auto 10px;align-items:flex-end;gap:3px;}
+  .music-control-wrap .music-button,.invitation-experience .music-control-wrap .music-button {position:static;display:inline-flex;min-height:42px;align-items:center;justify-content:center;gap:8px;padding:8px 12px;}
+  .music-control-wrap .music-button svg {display:block;flex:0 0 auto;}
+  .music-attribution {max-width:min(100%,300px);padding-right:3px;font-size:8px;line-height:1.25;text-align:right;}
+  .mobile-action-bar {bottom:max(9px,env(safe-area-inset-bottom));gap:2px;padding:5px;border-radius:17px;}
+  .mobile-action-bar a,.mobile-action-bar button {min-height:52px;gap:4px;font-size:9px;line-height:1.1;white-space:nowrap;}
+  .mobile-action-bar svg {display:block;width:19px;height:19px;flex:0 0 19px;}
+  .mobile-action-bar a:focus-visible,.mobile-action-bar button:focus-visible {outline:2px solid #a46b9e;outline-offset:1px;}
+  .action-firework {display:none;}
+  .page-shell.page-entered {overflow-x:clip;}
+}
+@media(max-width:370px) {
+  .invitation-experience {padding-right:9px;padding-left:9px;}
+  .music-control-wrap,.invitation-experience .music-control-wrap {width:100%;}
+  .music-control-wrap .music-button,.invitation-experience .music-control-wrap .music-button {min-height:40px;padding:7px 10px;font-size:11px;}
+  .music-attribution {max-width:205px;font-size:7px;}
+  .mobile-action-bar {left:8px;right:8px;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:4px;}
+  .mobile-action-bar a,.mobile-action-bar button {min-height:48px;font-size:8px;letter-spacing:0;}
+  .mobile-action-bar svg {width:18px;height:18px;flex-basis:18px;}
+}
+/* Rajputana finish: sandstone, heirloom gold, marigold and deep wine. */
+.royal-backdrop {position:absolute;z-index:-1;inset:0;overflow:hidden;pointer-events:none;background:#845d70;}
+.royal-backdrop>svg {display:block;width:100%;height:100%;}
+.gate-palace {display:none!important;}
+.gate-scene {background:linear-gradient(180deg,#4a335a,#bd7d82 44%,#f2c194 76%,#ead5b7);}
+.gate-scene::before {opacity:.035;}
+.gate-scene::after {background:linear-gradient(180deg,#241a2d16,transparent 36%,#39213217),radial-gradient(ellipse at center,transparent 35%,#3c253d35 100%);}
+.gate-welcome {color:#6a303b;text-shadow:0 2px 12px #ffe8c5aa;}
+.gate-kicker {color:#f8dfae;font-size:10px;letter-spacing:.2em;text-shadow:0 1px 10px #512e42;}
+.gate-welcome p {color:#fff0d6;text-shadow:0 1px 8px #44263e;}
+.gate-flourish {color:#f7d38a;text-shadow:0 1px 9px #4c293f;}
+.gate-sky {color:#ffe5a1;text-shadow:0 0 14px #ffdc8e,0 0 30px #e6a562;}
+.gate-portal {filter:drop-shadow(0 22px 36px #2a172b77);}
+.portal-arch {background:linear-gradient(90deg,#6d3847,#d5a55f 9%,#87444d 17%,#f1d69d 50%,#87444d 83%,#d5a55f 91%,#6d3847);box-shadow:inset 0 0 0 2px #fff0c8,inset 0 0 0 6px #b98649,inset 0 0 0 10px #682e42,0 0 32px #ffdf9f77;}
+.portal-arch::before {border-color:#f8e4b8;}
+.portal-light {background:radial-gradient(ellipse at 50% 34%,#fff9dc 0,#f5d894 25%,#cf9c71 58%,#79435a 100%);color:#633343;}
+.portal-glow {color:#fff7ce;text-shadow:0 0 18px #fff3b9,0 0 45px #f3c570;}
+.gate-door {background:linear-gradient(90deg,#341c2c 0%,#6c303b 5%,#9a4d4d 10%,#592735 18%,#7c3943 28%,#532635 40%,#3a1d2e 50%,#67303a 62%,#482332 75%,#98504a 90%,#371d2c 100%);border-color:#e6c37d;box-shadow:inset 0 0 0 2px #d9b36d,inset 0 0 0 5px #512536,inset 0 0 0 8px #eccd8b,inset 0 0 0 11px #512536,inset 0 0 0 17px #5c2a38,inset 0 0 38px #1c101b99,0 12px 28px #311b2a99;}
+.gate-door::before {border-color:#e8ca8c;box-shadow:inset 0 0 0 4px #57283a,inset 0 0 0 5px #d6aa61,inset 0 0 0 10px #59283a,inset 0 0 20px #21121c99;}
+.gate-door::after {border-color:#dcb66f;background:linear-gradient(90deg,#f4d28d18,transparent 25%,#f4d28d0d 50%,transparent 76%,#f4d28d18);}
+.door-carving {stroke:#efd79e;filter:drop-shadow(0 1px 2px #28131e) drop-shadow(0 0 4px #f3d58d66);}
+.door-medallion {border-color:#ffe6a6;background:radial-gradient(circle at 32% 25%,#ffe9a3,#c98f47 45%,#813e49 72%,#3c2438);color:#fff1c6;box-shadow:0 0 0 3px #4e293b,0 0 0 5px #d9ae62,0 4px 10px #211320;}
+.door-handle {background:radial-gradient(circle at 35% 28%,#fff3bf,#d2a255 52%,#673341);box-shadow:0 0 0 2px #482433,0 0 12px #ffdf91;}
+.gate-invitation-button {border-color:#f2d797;background:linear-gradient(120deg,#572638,#8d3f4a 52%,#ac6952);color:#fff6de;box-shadow:0 11px 28px #351a2d66,inset 0 1px #fff7;}
+.page-shell.page-entered {background:linear-gradient(180deg,#ffdec0 0%,#f3d3c1 32%,#efe0cb 65%,#d7c6b4 100%);}
+.sky-backdrop {background:radial-gradient(ellipse at 50% 31%,#fff2c955 0,transparent 37%),linear-gradient(180deg,#e5b8b1 0%,#f5d6bb 50%,#e8c9ac 100%);}
+.sky-lights {stroke:#ad7448;filter:drop-shadow(0 2px 6px #73453845);}.sky-lights>path,.sky-lights .light-string {stroke:#966044;}
+.light-glow {fill:#e9ad43;stroke:#a96a39;filter:drop-shadow(0 0 7px #ffd36a);}.light-bulb {fill:#fff0b1;}
+.mountain-back {fill:#a66c79;opacity:.68;}.mountain-front {fill:#bc7882;opacity:.76;}.mountain-near {fill:#667450;opacity:.72;}.sky-sun {fill:#f2b544;}
+.invite-card {border-color:#b58b4b;background:linear-gradient(145deg,#fff8e9 0%,#f9edd9 42%,#f5e7d4 100%);box-shadow:0 32px 85px #38252b26,0 0 0 5px #fff8e9,0 0 0 6px #b99252,0 0 0 8px #fff7e7;}
+.invite-card::before {border-color:#c7a466;}.invite-card::after {border-color:#d1b57e77;}.card-pattern {opacity:.14;filter:sepia(.18);}
+.crest b {border-color:#b58b4b;background:linear-gradient(145deg,#fff6df,#ead5ae);color:#7a303e;box-shadow:0 2px 9px #8c63251c;}
+.eyebrow {color:#806249;}
+.invitation-ribbon {border-color:#c7a466;background:linear-gradient(90deg,#fff9ea,#f2e3ca,#fff9ea);color:#775339;}
+.couple-names {color:#572635;text-shadow:0 2px 16px #77553618;}.couple-names em {color:#ae7650;}
+.gold-divider {color:#a77b42;}.gold-divider i {background:linear-gradient(90deg,transparent,#b58b4b);}
+.invite-message {color:#714d45;}
+.event-month,.date-row strong,.event-year {color:#6c2938;}.date-side {border-color:#ad7853;color:#755044;}
+.venue-block {border-color:#d3b98a;background:linear-gradient(90deg,transparent,#fff9ed99,transparent);}
+.venue-label {color:#9a7043;}.venue-name {color:#602a37;}.venue-address {color:#735348;}.family-signoff {color:#7a3b47;}
+.palace-line,.palace-dome {stroke:#a17a45;}.palace-fill {fill:#edd7b4;stroke:#a17a45;}.palace-flower {stroke:#71814e;}.palace-dot {fill:#d89a44;}
+.details-panel {border-color:#c3a268;background:linear-gradient(145deg,#fff9ed,#f7eddf 72%,#efe2d1);box-shadow:0 18px 45px #39262a1d,inset 0 1px #fff;}
+.details-panel::before {border-color:#dcc79d;}.details-panel h2 {color:#602a39;}
+.details-ornament,.details-divider {color:#a47841;}.details-divider::before,.details-divider::after {background:#dac69e;}
+.countdown-cell {border-color:#d6c096;background:linear-gradient(150deg,#fffcf3,#f0e2cb);}.countdown-value {color:#642b3a;}.countdown-label {color:#896b49;}
+.detail-icon {border-color:#d3ba8a;color:#7b6841;background:linear-gradient(145deg,#fffbee,#efe1c7);}
+.venue-detail strong {color:#5d2937;}.venue-detail p {color:#766050;}.venue-detail .venue-label {color:#9a7043;}
+.map-button {border-color:#2d5a4a;background:linear-gradient(110deg,#285344,#3c715b);color:#fff6df;box-shadow:0 9px 19px #274b3d2e,inset 0 1px #ffffff30;}.map-button:hover {color:#285344;}
+.contact-card {border-color:#ddc99e;background:linear-gradient(110deg,#fffaf0,#f3e7d4);color:#5b352e;}.contact-copy small {color:#977447;}.contact-copy strong {color:#592a37;}.contact-call {border-color:#ddc99e;color:#755333;}
+.details-note {color:#8c704e;}
+.celebrate-button {border-color:#f3dda8;background:linear-gradient(115deg,#69293b,#933d4b 52%,#b77b45);box-shadow:0 10px 24px #713b4333,inset 0 1px #ffffff66;}
+.mobile-action-bar {border-color:#ddc99e;background:linear-gradient(135deg,#fffaf0ed,#f4e8d7e8);box-shadow:0 12px 32px #392b2733,inset 0 1px #fff;}
+.mobile-action-bar a,.mobile-action-bar button {color:#6c3a42;}.mobile-action-bar a:active,.mobile-action-bar button:active {background:#eee1cb;color:#45232f;}
+@media(max-width:600px) {
+  .royal-backdrop {inset:-1% -20%;}
+  .royal-backdrop>svg {width:140%;max-width:none;height:100%;margin-left:-20%;}
+  .gate-welcome {top:calc(5% + env(safe-area-inset-top));}
+  .gate-kicker {font-size:8px;}
+  .gate-welcome h1 {font-size:clamp(27px,7.5vw,34px);}
+}
+/* Refined royal finish */
+.gate-kicker{display:inline-block;padding:9px 15px;border:1px solid #eac77d88;border-radius:999px;background:#381b2a3d;color:#ffedca;font-size:10px;letter-spacing:.25em;text-shadow:0 1px 8px #311520;backdrop-filter:blur(8px)}
+.gate-welcome h1{font-weight:600;letter-spacing:.015em;text-shadow:0 2px 18px #3a1c2d66,-1px 0 #fff0d133}
+.gate-welcome p{font-size:clamp(15px,2vw,18px);letter-spacing:.03em}
+.gate-invitation-button{font-weight:600;letter-spacing:.16em;box-shadow:0 12px 30px #2b192b77,inset 0 1px #fff8;}
+.gate-invitation-button:focus-visible,.music-button:focus-visible,.map-button:focus-visible,.contact-card:focus-visible,.celebrate-button:focus-visible,.mobile-action-bar button:focus-visible,.mobile-action-bar a:focus-visible{outline:3px solid #f4cb78;outline-offset:3px}
+.invitation-copy{padding-top:50px}
+.invite-card{border-radius:4px;background:linear-gradient(145deg,#fffcf4 0%,#f8f0e5 52%,#f4eadc 100%);}
+.invitation-experience .invite-card{box-shadow:0 34px 90px #39252b2e,0 0 0 6px #fffaf0,0 0 0 7px #b99252,0 0 0 10px #fff8e8;}
+.couple-names{font-weight:600;letter-spacing:-.04em}
+.invitation-ribbon{box-shadow:0 3px 12px #654f2010}
+.family-signoff{display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:22px;color:#73564b;font-style:normal;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.family-signoff strong{display:inline-flex;align-items:center;gap:9px;padding:8px 19px;border:1px solid #c99b51;border-radius:999px;background:linear-gradient(120deg,#67253a,#842e40 58%,#9b533b);color:#fff5df;font-size:17px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 7px 18px #67253a26,inset 0 1px #fff4}
+.family-signoff strong::before,.family-signoff strong::after{content:'✦';color:#efce84;font-size:10px}
+.details-panel{border-radius:5px;background:linear-gradient(145deg,#fffaf0,#f4e9d9);box-shadow:0 20px 50px #39262a20,0 0 0 4px #fff9eb,0 0 0 5px #c2a268}
+@media(max-width:600px){.invitation-copy{padding-top:36px}.family-signoff{font-size:12px}.family-signoff strong{font-size:15px;padding:8px 15px}.gate-kicker{font-size:8px;letter-spacing:.2em}.invite-card{border-radius:3px}}
